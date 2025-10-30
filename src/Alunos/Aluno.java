@@ -7,7 +7,7 @@ import Disciplinas.Disciplina;
 public class Aluno {
 	
 	//Atributos
-	public String nome;
+	private String nome;
 	public int idade;
 	public String matricula;
 	private ArrayList<Disciplina> listaDisciplinas = new ArrayList<Disciplina>();
