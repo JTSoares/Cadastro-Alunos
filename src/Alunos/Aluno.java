@@ -8,7 +8,7 @@ public class Aluno {
 	
 	//Atributos
 	private String nome;
-	public int idade;
+	private	int idade;
 	public String matricula;
 	private ArrayList<Disciplina> listaDisciplinas = new ArrayList<Disciplina>();
 	
