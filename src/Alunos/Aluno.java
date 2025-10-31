@@ -42,7 +42,7 @@ public class Aluno {
 	}
 
 	public void setMatricula(String matricula) {
-		if ((matricula != null) && (matricula.length() > 0)) {
+		if ((matricula != null) && (!matricula.isEmpty())) {
 			this.matricula = matricula;
 		}
 	}
