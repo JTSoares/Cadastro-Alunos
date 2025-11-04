@@ -32,7 +32,7 @@ public class Pessoa {
 
     public void setCPF(String cpf) {
         if ((!cpf.isEmpty()) && (cpf.length() == 11) ) {
-            this.cpf = CPF;
+            this.cpf = cpf;
         }else {
             System.out.println("CPF INVÁLIDO");
         }
