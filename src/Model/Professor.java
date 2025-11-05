@@ -3,26 +3,16 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Professor extends Pessoa {
+public class Professor extends Usuario {
     //****************ATRIBUTOS****************
-    private String matricula;
     private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
     //****************CONSTRUTOR****************
     public Professor(String nome, int idade, String cpf, String matricula) {
-        super(nome, idade, cpf);
-        this.matricula = matricula;
+        super(nome, idade, cpf, matricula);
     }
 
     //****************GETTER/SETTER****************
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }
@@ -62,7 +52,7 @@ public class Professor extends Pessoa {
             System.out.println("Aluno " + aluno.getNome() + " não pertence a disciplina");
         }
     }
-    
+
     /**
      * Metodo: lancarFaltas
      * Objetivo: Permitir que um professor lance faltas para um determinado aluno em uma disciplina específica

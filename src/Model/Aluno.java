@@ -3,15 +3,13 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 //
-public class Aluno extends Pessoa {
+public class Aluno extends Usuario {
 
 	//***********************ATRIBUTOS***********************
-	private String matricula;
 	private List<Boletim> historico = new ArrayList<>();	//Lista das notas e respectivas disciplinas
 
 	public Aluno(String nome, int idade, String cpf, String matricula) {
-		super(nome, idade, cpf);
-		this.setMatricula(matricula);
+		super(nome, idade, cpf, matricula);
 	}
 
 	//***********************GETTERS E SETTERS***********************
@@ -33,16 +31,6 @@ public class Aluno extends Pessoa {
 		}
 	}
 
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		if ((matricula != null) && (!matricula.isEmpty())) {
-			this.matricula = matricula;
-		}
-	}
-
 	public List<Boletim> getHistorico() {
 		return historico;
 	}
@@ -61,6 +49,14 @@ public class Aluno extends Pessoa {
 	public void adicionarBoletim(Boletim boletim) {
 		if (!historico.contains(boletim)) {
 			this.historico.add(boletim);
+		}
+	}
+
+	public void adicionarAvaliacao(Disciplina disciplina, Avaliacao avaliacao) {
+		for (Boletim boletim : this.historico) {
+			if (boletim.getDisciplina().equals(disciplina)) {
+				boletim.adicionarAvaliacao(avaliacao);
+			}
 		}
 	}
 
@@ -101,7 +97,7 @@ public class Aluno extends Pessoa {
 		return "Aluno{" +
 				"nome='" + nome + '\'' +
 				", idade=" + idade +
-				", matricula='" + matricula + '\'' +
+				", matricula='" + getMatricula() + '\'' +
 				'}';
 	}
 }
