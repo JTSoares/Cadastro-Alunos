@@ -2,15 +2,15 @@ package Model;
 
 public class Pessoa {
     //**********ATRIBUTOS********
-     private String nome;
-     private String cpf;
-     private int idade;
+     protected String nome;
+     protected String cpf;
+     protected int idade;
 
     //**********CONSTRUTOR********
-    public Pessoa(String nome, int idade, String CPF) {
+    public Pessoa(String nome, int idade, String cpf) {
         setNome(nome);
         setIdade(idade);
-        setCPF(CPF);
+        setCPF(cpf);
     }
 
     //**********GETTER E SETTER********

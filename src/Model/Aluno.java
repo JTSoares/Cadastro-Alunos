@@ -3,17 +3,14 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 //
-public class Aluno {
+public class Aluno extends Pessoa {
 
 	//***********************ATRIBUTOS***********************
-	private String nome;
-	private int idade;
 	private String matricula;
 	private List<Boletim> historico = new ArrayList<>();	//Lista das notas e respectivas disciplinas
 
-	public Aluno(String nome, int idade, String matricula) {
-		this.setNome(nome);
-		this.setIdade(idade);
+	public Aluno(String nome, int idade, String cpf, String matricula) {
+		super(nome, idade, cpf);
 		this.setMatricula(matricula);
 	}
 
@@ -64,6 +61,23 @@ public class Aluno {
 	public void adicionarBoletim(Boletim boletim) {
 		if (!historico.contains(boletim)) {
 			this.historico.add(boletim);
+		}
+	}
+
+	/**
+	 * Metodo: adicionarFaltas
+	 * Objetivo: adicionar uma determinada quantidade de faltas para um aluno, de acordo com uma determinada disciplina
+	 * @param disciplina
+	 * @param qtd
+	 */
+	public void adicionarFaltas(Disciplina disciplina, int qtd) {
+		for (Boletim boletim : historico) {
+			if (boletim.getDisciplina().equals(disciplina)) {	//Se existir a disciplina na lista de disciplinas que um aluno possui
+				boletim.adicionarFaltas(qtd);
+				break;
+			}else {
+				System.out.println("Disciplina nao encontrada!");
+			}
 		}
 	}
 

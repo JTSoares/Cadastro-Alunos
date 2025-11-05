@@ -1,11 +1,15 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Disciplina {
 	
 	//*******************************ATRIBUTOS*******************************
 	private String nome;
 	private String codigo;
-	private int cargaHoraria; 
+	private int cargaHoraria;
+	private List<Aluno> alunos =  new ArrayList<Aluno>();
 
 	//*******************************CONSTRUTOR*******************************
 	public Disciplina(String nome, String codigo, int carga) {
@@ -44,6 +48,18 @@ public class Disciplina {
 		if(!nome.isEmpty()){
 			this.nome = nome;
 		}
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public void adicionarAlunos(Aluno aluno) {
+		this.alunos.add(aluno);
 	}
 
 	@Override

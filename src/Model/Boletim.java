@@ -10,6 +10,7 @@ public class Boletim {
     private List<Avaliacao> avaliacoes = new ArrayList<>();
     private boolean situacao;
     private double mediaFinal;
+    private int faltas;
 
     //***********************CONSTRUTORES***********************
     public Boletim(Disciplina disciplina) {
@@ -48,6 +49,15 @@ public class Boletim {
         this.mediaFinal = mediaFinal;
     }
 
+    public int getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(int faltas) {
+        if (faltas > 0){
+            this.faltas = faltas;
+        }
+    }
     //***********************METODOS***********************
 
     /**
@@ -57,6 +67,24 @@ public class Boletim {
      */
     public void adicionarAvaliacao(Avaliacao avaliacao) {
         this.avaliacoes.add(avaliacao);
+    }
+
+    /**
+     * Metodo: adicionarFaltas
+     * Objetivo: Atribuir faltas ao boletim
+     * @param falta Quantidades de faltas que deseja-se remover
+     */
+    public void adicionarFaltas(int falta) {
+        this.faltas += this.faltas + falta;
+    }
+
+    /**
+     * Metodo: removerFaltas
+     * Objetivo: remover uma quantidade de faltas de um determinado aluno
+     * @param falta
+     */
+    public void removerFaltas(int  falta) {
+        this.faltas = this.faltas - falta;
     }
 
     /**
