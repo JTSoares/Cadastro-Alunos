@@ -49,6 +49,21 @@ public class Professor extends Pessoa {
     }
 
     /**
+     * Metodo: lancarAvaliacao
+     * Objetivo: Permitir que um professor lance as avaliações para um aluno
+     * @param avaliacao
+     * @param aluno
+     * @param disciplina
+     */
+    public void lancarAvaliacao(Avaliacao avaliacao, Aluno aluno, Disciplina disciplina) {
+        if (disciplina.getAlunos().contains(aluno)) {
+            aluno.adicionarAvaliacao(disciplina, avaliacao);
+        }else{
+            System.out.println("Aluno " + aluno.getNome() + " não pertence a disciplina");
+        }
+    }
+    
+    /**
      * Metodo: lancarFaltas
      * Objetivo: Permitir que um professor lance faltas para um determinado aluno em uma disciplina específica
      * @param aluno //Que deve ser feito as faltas
