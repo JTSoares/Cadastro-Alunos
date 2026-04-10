@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
+	private static List<Aluno> listaAlunos = new ArrayList<Aluno>(); 
+	private static List<Professor> listaProfessores = new ArrayList<Professor>(); 
+	private static List<Disciplina> listaDisciplinas = new ArrayList<Disciplina>(); 
+	
     public static void main(String[] args) {
         Professor prof = new Professor("Lisbete", 78, "55041311896", "PROF001");
         Disciplina algoritmos1 = new Disciplina("Desenvolvimento de Algoritmos", "DATL", 36);
