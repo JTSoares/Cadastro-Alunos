@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 //
 public class Aluno extends Usuario {
@@ -66,13 +67,11 @@ public class Aluno extends Usuario {
 	 * @param disciplina
 	 * @param qtd
 	 */
-	public void adicionarFaltas(Disciplina disciplina, int qtd) {
-		for (Boletim boletim : historico) {
-			if (boletim.getDisciplina().equals(disciplina)) {	//Se existir a disciplina na lista de disciplinas que um aluno possui
-				boletim.adicionarFaltas(qtd);
-				break;
-			}else {
-				System.out.println("Disciplina nao encontrada!");
+	public void adicionarFaltas(Disciplina disciplina, int qtd, String data) {
+		for (Boletim b: historico) {
+			if(b.getDisciplina().equals(disciplina)) {
+				b.adicionarFaltas(data, qtd);
+				break; 
 			}
 		}
 	}

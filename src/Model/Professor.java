@@ -60,9 +60,10 @@ public class Professor extends Usuario {
      * @param disciplina    //Disciplina que devera lancar as faltas
      * @param qtd           //Quantidade de faltas que o professor dsejea lançar
      */
-    public void lancarFaltas(Aluno aluno,  Disciplina disciplina, int qtd) {
+    public void lancarFaltas(Aluno aluno,  Disciplina disciplina, String data, int qtd) {
         if (disciplina.getAlunos().contains(aluno)) {
-            aluno.adicionarFaltas(disciplina, qtd);     //Adiciona a falta para o aluno na determinada disciplina
+            // aluno.adicionarFaltas(disciplina, qtd);     //Adiciona a falta para o aluno na determinada disciplina
+        	aluno.adicionarFaltas(disciplina, qtd, data);
         }
         else {
             System.out.println("Aluno "+ aluno.getNome() + " não encontrado para a disciplina "+ disciplina.getNome());

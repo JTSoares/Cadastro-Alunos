@@ -37,7 +37,7 @@ public class Sistema {
         // Professor lançando nota (Prova 1 vale 10, ele tirou 8.5)
         Avaliacao prova1 = new Avaliacao("Prova 1", 8.5, 1.0); 
         prof1.lancarAvaliacao(prova1, aluno1, algoritmos);
-        prof1.lancarFaltas(aluno1, algoritmos, 2);
+        prof1.lancarFaltas(aluno1, algoritmos,"02/01/2026", 2);
         
         System.out.println("Dados de teste carregados com sucesso!");
     }

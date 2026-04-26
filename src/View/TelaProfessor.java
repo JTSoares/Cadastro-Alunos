@@ -145,15 +145,8 @@ public class TelaProfessor extends JFrame {
         lblDataFalta.setBounds(20, 100, 150, 25);
         abaFaltas.add(lblDataFalta);
 
-        JFormattedTextField txtDataFalta = null;
-        try {
-            // Cria a máscara que força o formato de data
-            javax.swing.text.MaskFormatter mascaraData = new javax.swing.text.MaskFormatter("##/##/####");
-            mascaraData.setPlaceholderCharacter('_'); // Mostra um underline onde falta digitar
-            txtDataFalta = new JFormattedTextField(mascaraData);
-        } catch (Exception ex) {
-            txtDataFalta = new JFormattedTextField(); // Se der erro na máscara, cria um campo normal
-        }
+        JFormattedTextField txtDataFalta = new JFormattedTextField(criarMascaraData()); 
+        
         txtDataFalta.setBounds(150, 100, 200, 25);
         abaFaltas.add(txtDataFalta);
 
@@ -174,6 +167,7 @@ public class TelaProfessor extends JFrame {
                 if (listaDisc.isEmpty()) return;
                 String matricula = txtMatriculaFaltas.getText();
                 int qtdFaltas = Integer.parseInt(txtQtdFaltas.getText().replaceAll("[^0-9]", ""));
+                String dataDigitada = txtDataFalta.getText(); 
 
                 int indexSelecionado = cbxDisciplinasFaltas.getSelectedIndex();
                 Disciplina disciplinaSelecionada = listaDisc.get(indexSelecionado);
@@ -184,8 +178,7 @@ public class TelaProfessor extends JFrame {
                 }
 
                 if (alunoEncontrado != null) {
-                    // AQUI A POO BRILHA! Chamando o método que você já tinha criado
-                    profLogado.lancarFaltas(alunoEncontrado, disciplinaSelecionada, qtdFaltas);
+                    profLogado.lancarFaltas(alunoEncontrado, disciplinaSelecionada, dataDigitada,  qtdFaltas);
                     JOptionPane.showMessageDialog(null, qtdFaltas + " falta(s) registrada(s) com sucesso!");
                     txtMatriculaFaltas.setText(""); txtQtdFaltas.setText("");
                 } else {
@@ -198,5 +191,20 @@ public class TelaProfessor extends JFrame {
 
         painelAbas.addTab("Lançar Notas", abaNotas);
         painelAbas.addTab("Registrar Faltas", abaFaltas);
+    }
+    
+    /**
+     * Método auxiliar (Fábrica) para criar a máscara de data isoladamente.
+     * Isso resolve o problema de escopo (Effectively Final) da Lambda.
+     */
+    private javax.swing.text.MaskFormatter criarMascaraData() {
+        try {
+            javax.swing.text.MaskFormatter mascara = new javax.swing.text.MaskFormatter("##/##/####");
+            mascara.setPlaceholderCharacter('_');
+            return mascara;
+        } catch (java.text.ParseException e) {
+            System.err.println("Erro na máscara: " + e.getMessage());
+            return null; 
+        }
     }
 }

@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Boletim {
@@ -11,6 +12,8 @@ public class Boletim {
     private boolean situacao;
     private double mediaFinal;
     private int faltas;
+    List<Falta> listaFaltas = new ArrayList<Falta>(); 
+    		
 
     //***********************CONSTRUTORES***********************
     public Boletim(Disciplina disciplina) {
@@ -50,7 +53,12 @@ public class Boletim {
     }
 
     public int getFaltas() {
-        return faltas;
+    	int total = 0; 
+    	for (Falta f: listaFaltas) {
+			total += f.getQuantidade(); 
+		}
+    	
+        return total;
     }
 
     public void setFaltas(int faltas) {
@@ -74,8 +82,12 @@ public class Boletim {
      * Objetivo: Atribuir faltas ao boletim
      * @param falta Quantidades de faltas que deseja-se remover
      */
-    public void adicionarFaltas(int falta) {
-        this.faltas += this.faltas + falta;
+    public void adicionarFaltas(String data, int qtd) {
+        if (qtd > 0) {
+        	Falta novaFalta = new Falta(data, qtd);
+        	listaFaltas.add(novaFalta); 
+		}
+    	
     }
 
     /**
